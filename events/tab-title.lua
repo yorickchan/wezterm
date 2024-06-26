@@ -22,20 +22,16 @@ function tab_title(tab_info)
 end
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-	local edge_background = "#0b0022"
-	local background = "#0b0022"
-	-- local background = "#1b1032"
-	local foreground = "#808080"
+	local background = "#85678f"
+	local foreground = "silver"
+	local edge_background = "black"
+	local edge_foreground = "#b294bb"
 
 	if tab.is_active then
-		background = "#2b2042"
-		foreground = "#c0c0c0"
-	elseif hover then
-		background = "#3b3052"
-		foreground = "#909090"
+		background = "#b294bb"
+		foreground = "black"
+		edge_foreground = "#b294bb"
 	end
-
-	local edge_foreground = background
 
 	local title = tab_title(tab)
 
@@ -44,9 +40,9 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 	title = wezterm.truncate_right(title, max_width)
 
 	return {
-		{ Background = { Color = edge_background } },
-		{ Foreground = { Color = edge_foreground } },
-		-- { Text = SOLID_LEFT_ARROW },
+		-- { Background = { Color = edge_background } },
+		-- { Foreground = { Color = edge_foreground } },
+		-- { Text = "  " },
 		{ Background = { Color = background } },
 		{ Foreground = { Color = foreground } },
 		{ Text = "  " },
@@ -55,7 +51,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 		{ Background = { Color = edge_background } },
 		{ Foreground = { Color = edge_foreground } },
 		{ Text = SOLID_RIGHT_ARROW },
-		{ Text = " " },
+		{ Text = "  " },
 	}
 end)
 
